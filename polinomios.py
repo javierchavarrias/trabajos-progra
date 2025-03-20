@@ -56,3 +56,8 @@ class Polinomio: #creamos un diccionario nueva para almacenar los polinomios
                 dividendo = {k: v for k, v in dividendo.items() if v != 0}
 
             return Polinomio(cociente), Polinomio(dividendo) #el dividendo es el resto
+
+def cargar_polinomio_desde_texto(texto):
+"""Convierte un polinomio en formato texto a un diccionario."""
+    coeficientes = {}
+    terminos = texto.split(" ")
