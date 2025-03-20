@@ -33,3 +33,25 @@ class Polinomio: #creamos un diccionario nueva para almacenar los polinomios
                 nuevo_grado = grado1 + grado2
                 resultado[nuevo_grado] = resultado.get(nuevo_grado, 0) + coef1 * coef2
         return Polinomio(resultado)
+    def division(self, otro):
+            if max(otro.coeficientes.keys()) == 0 and otro.coeficientes[0] == 0:
+                return "Error: División por cero"
+
+            dividendo = self.coeficientes.copy()
+            divisor = otro.coeficientes
+            cociente = {}
+
+            if max(divisor.keys()) == 0:
+                coef_divisor = divisor[0]
+                cociente = {grado: coef / coef_divisor for grado, coef in dividendo.items()}
+                return Polinomio(cociente), Polinomio({})
+
+            while dividendo and (max(dividendo.keys()) >= max(divisor.keys())):
+                grado_dif = max(dividendo.keys()) - max(divisor.keys())
+                coef_dif = dividendo[max(dividendo.keys())] / divisor[max(divisor.keys())]
+                cociente[grado_dif] = coef_dif
+                resta_polinomio = {grado + grado_dif: coef * coef_dif for grado, coef in divisor.items()}
+                dividendo = Polinomio(dividendo).resta(Polinomio(resta_polinomio)).coeficientes
+                dividendo = {k: v for k, v in dividendo.items() if v != 0}
+
+            return Polinomio(cociente), Polinomio(dividendo)
