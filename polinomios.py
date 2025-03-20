@@ -10,3 +10,10 @@ class Polinomio: #creamos un diccionario nueva para almacenar los polinomios
         """Evalúa el polinomio en un valor x dado."""
         resultado = sum(coef * (x ** grado) for grado, coef in self.coeficientes.items())
         return resultado
+
+    def suma(self, otro):
+        """Realiza la suma de dos polinomios."""
+        resultado = self.coeficientes.copy()
+        for grado, coef in otro.coeficientes.items():
+            resultado[grado] = resultado.get(grado, 0) + coef
+        return Polinomio(resultado)
