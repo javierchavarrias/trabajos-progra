@@ -54,7 +54,21 @@ def menu_opciones():
                 polinomio2 = ficheros.leer_fichero(archivo2)
             else:
                 polinomio2 = polinomios.cargar_polinomio_desde_texto(modo_entrada2)
-                
+            if opcion == '1':
+                resultado = polinomio1.suma(polinomio2)
+            elif opcion == '2':
+                resultado = polinomio1.resta(polinomio2)
+            elif opcion == '3':
+                resultado = polinomio1.multiplicacion(polinomio2)
+            elif opcion == '4':
+                resultado, resto = polinomio1.division(polinomio2)
+        elif opcion == '5':
+            x = float(input("Introduzca el valor de x: "))
+            resultado = polinomio1.evaluar(x)
+        else:
+            print("Opción inválida.")
+            continue
+
 
 
 menu_opciones()
