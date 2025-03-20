@@ -83,6 +83,19 @@ def menu_opciones():
         print("4. \033[1mSeguir\033[0m calculando con un \033[1mnuevo Polinomio 1\033[0m")
 
         siguiente_opcion = input("Seleccione una opción: ")
+        if siguiente_opcion == '1':
+            print("Saliendo del programa.")
+            break
+        elif siguiente_opcion == '2':
+            nombre_archivo = input("Introduzca el nombre del archivo para guardar el resultado: ")
+            descargar_fichero(nombre_archivo, resultado)
+            print("Resultado guardado correctamente.")
+        elif siguiente_opcion == '3':
+            continue
+        elif siguiente_opcion == '4':
+            resultado = None
+        else:
+            print("Opción inválida. Volviendo al menú de operaciones.")
 
 
 menu_opciones()
