@@ -17,6 +17,7 @@ class Polinomio: #creamos un diccionario nueva para almacenar los polinomios
         for grado, coef in otro.coeficientes.items():
             resultado[grado] = resultado.get(grado, 0) + coef
         return Polinomio(resultado)
+
     def resta(self, otro):
         """Realiza la resta de dos polinomios."""
         resultado = self.coeficientes.copy()
