@@ -22,3 +22,19 @@ def menu_opciones():
             polinomio1 = resultado
             print("Usando el resultado anterior como polinomio 1.")
 
+    print("")
+    print("--------")
+    print("")
+    print("\033[1mSeleccione la operación que desea realizar\033[0m")
+    print("")
+    print("1. Suma")
+    print("2. Resta")
+    print("3. Multiplicación")
+    print("4. División")
+    print("5. Evaluación")
+    print("6. Salir")
+    opcion = input("Seleccione una opción: ")
+
+
+menu_opciones()
+
