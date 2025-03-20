@@ -36,6 +36,9 @@ def menu_opciones():
         print("5. Evaluación")
         print("6. Salir")
         opcion = input("Seleccione una opción: ")
+        if opcion == '6':
+            print("Saliendo del programa.")
+            break
 
 
 menu_opciones()
