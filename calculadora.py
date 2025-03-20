@@ -39,6 +39,22 @@ def menu_opciones():
         if opcion == '6':
             print("Saliendo del programa.")
             break
+        if opcion in ['1', '2', '3', '4']:
+            print("")
+            print("--------")
+            print("Vamos a introducir el \033[1mPolinomio 2.\033[0m")
+            print("")
+            print(
+                "Para introducir el Polinonio 2 puede hacerlo manualmente, escribiéndolo directamente siguiendo esta estructura (\033[3m4x^2 -6x +3\033[0m)")
+            print("o si desaa cargarlo desde un archivo, escriba F ")
+            modo_entrada2 = input("").strip().lower()
+
+            if modo_entrada2 == 'f':
+                archivo2 = input("Introduzca el nombre del archivo: ")
+                polinomio2 = ficheros.leer_fichero(archivo2)
+            else:
+                polinomio2 = polinomios.cargar_polinomio_desde_texto(modo_entrada2)
+                
 
 
 menu_opciones()
