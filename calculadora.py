@@ -68,7 +68,21 @@ def menu_opciones():
         else:
             print("Opción inválida.")
             continue
+        print("")
+        print("--------")
+        print(f"\033[1mResultado: {resultado}\033[0m")
+        if opcion == 4:
+            print(f"Resto: {resto}")
+        print("--------")
+        print("")
+        print("")
+        print("\033[1m¿Qué desea hacer ahora?\033[0m")
+        print("1. \033[1mSalir\033[0m de la calculadora")
+        print("2. \033[1mDescargar\033[0m el resultado en un archivo")
+        print("3. \033[1mSeguir\033[0m calculando con el \033[1mresultado como Polinomio 1\033[0m")
+        print("4. \033[1mSeguir\033[0m calculando con un \033[1mnuevo Polinomio 1\033[0m")
 
+        siguiente_opcion = input("Seleccione una opción: ")
 
 
 menu_opciones()
