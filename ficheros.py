@@ -7,3 +7,9 @@ def leer_fichero(nombre_fichero):
     except FileNotFoundError:
         print("Error: Fichero no encontrado.")
         return None
+
+def descargar_fichero(nombre_fichero, resultado):
+    """Guarda el resultado de la operación en un fichero de texto."""
+    with open(nombre_fichero, 'w') as f:
+        f.write(str(resultado))
+    print(f"Resultado guardado en {nombre_fichero}")
