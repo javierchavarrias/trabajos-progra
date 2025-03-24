@@ -63,6 +63,8 @@ def cargar_polinomio_desde_texto(texto):
     texto = texto.replace("-", " -").replace("+", " +")
     terminos = texto.strip().split()
     for termino in terminos:
+        if not termino:
+            continue
         if "x^" in termino:
             coef_str, grado_str = termino.split("x^")
             coef_str = coef_str.strip()
@@ -79,7 +81,10 @@ def cargar_polinomio_desde_texto(texto):
                 coef=float(coef_str + "1")
             grado = 1
         else:
-            coef = float(termino)
+            if termino in ["", "+", "-"]:
+                coef = float(termino + "1")
+            else:
+                coef = float(termino)
             grado = 0
         coeficientes[grado] = coef
     return Polinomio(coeficientes)

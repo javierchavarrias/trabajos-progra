@@ -125,6 +125,11 @@ def menu_opciones():
             ficheros.descargar_fichero(nombre_archivo, resultado)
             print("Resultado guardado correctamente.")
         elif siguiente_opcion == '3':
+            if opcion == '5':
+                print("No se puede continuar con ese resultado como polinomio 1")
+                resultado= None
+            elif isinstance(resultado, str):
+                resultado=polinomios.cargar_polinomio_desde_texto(resultado)
             continue
         elif siguiente_opcion == '4':
             resultado = None
