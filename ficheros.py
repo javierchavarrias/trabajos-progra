@@ -16,7 +16,7 @@ def leer_fichero(nombre_fichero):
             elif linea.startswith("OPERACIÓN:"):
                 datos['operacion'] = linea.split(":")[-1].strip().upper()
 
-    try:
+    if 'operacion' not in datos:
         with open(nombre_fichero, 'r') as f:
             linea = f.readline().strip()
         return linea
