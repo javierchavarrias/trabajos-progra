@@ -49,7 +49,8 @@ def menu_opciones():
 
             elif modo_entrada == 'a':
                 archivo = input("Introduzca el nombre del archivo: ")
-                polinomio1 = ficheros.leer_fichero_unico(archivo)
+                pol = ficheros.leer_fichero_unico(archivo)
+                polinomio1= polinomios.cargar_polinomio_desde_texto(pol)
             else:
                 polinomio1 = polinomios.cargar_polinomio_desde_texto(modo_entrada)
         else:
@@ -83,7 +84,8 @@ def menu_opciones():
 
             if modo_entrada2 == 'a':
                 archivo2 = input("Introduzca el nombre del archivo: ")
-                polinomio2 = ficheros.leer_fichero_unico(archivo2)
+                pol = ficheros.leer_fichero_unico(archivo2)
+                polinomio2 = polinomios.cargar_polinomio_desde_texto(pol)
             else:
                 polinomio2 = polinomios.cargar_polinomio_desde_texto(modo_entrada2)
             if opcion == '1':
