@@ -19,7 +19,7 @@ def leer_fichero(nombre_fichero):
         if 'operacion' not in datos:
             with open(nombre_fichero, 'r') as f:
                 linea = f.readline().strip()
-         return linea
+            return linea
     except FileNotFoundError:
         print("Error: Fichero no encontrado.")
         return None
