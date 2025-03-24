@@ -1,3 +1,4 @@
+import polinomios
 def leer_fichero_completo(nombre_fichero):
     """Lee un fichero que contiene todo el funcionamiento"""
     datos={}
@@ -15,7 +16,23 @@ def leer_fichero_completo(nombre_fichero):
                 datos['numero'] = float(linea.split(":")[-1].strip())
             elif linea.startswith("OPERACIÓN:"):
                 datos['operacion'] = linea.split(":")[-1].strip().upper()
-
+        resultado = None
+        p1 = polinomios.cargar_polinomio_desde_texto(datos['p1'])
+        if datos['operacion'] == 'EVALUACIÓN':
+                resultado = p1.evaluar(datos['numero'])
+        else:
+            p2 = polinomios.cargar_polinomio_desde_texto(datos['p2'])
+            if datos['operacion'] == 'SUMA':
+             resultado = p1.suma(p2)
+            elif datos['operacion'] == 'RESTA':
+                    resultado = p1.resta(p2)
+            elif datos['operacion'] == 'MULTIPLICACION':
+                    resultado = p1.multiplicacion(p2)
+            elif datos['operacion'] == 'DIVISION':
+                    resultado, resto = p1.division(p2)
+                    datos['resto'] = resto
+            datos['resultado'] = resultado
+            return datos
     except FileNotFoundError:
         print("Error: Fichero no encontrado.")
         return None
