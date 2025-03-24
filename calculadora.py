@@ -18,7 +18,35 @@ def menu_opciones():
             modo_entrada = input("").strip().lower()
             if modo_entrada == 'f':
                 archivo = input("Introduzca el nombre del archivo: ")
-                polinomio1 = ficheros.leer_fichero_completo(archivo)
+                datos = ficheros.leer_fichero_completo(archivo)
+                if datos is None:
+                    continue
+                resultado = datos['resultado']
+                print("\nArchivo completo detectado. Operación realizada automáticamente.")
+                print(f"\033[1mResultado: {resultado}\033[0m")
+                if 'resto' in datos:
+                    print(f"Resto: {datos['resto']}")
+
+                print("\n\033[1m¿Qué desea hacer ahora?\033[0m")
+                print("1. \033[1mSalir\033[0m de la calculadora")
+                print("2. \033[1mDescargar\033[0m el resultado en un archivo")
+                print("3. \033[1mSeguir\033[0m calculando con el \033[1mresultado como Polinomio 1\033[0m")
+
+                siguiente_opcion = input("Seleccione una opción: ")
+                if siguiente_opcion == '1':
+                    print("Saliendo del programa.")
+                    break
+                elif siguiente_opcion == '2':
+                    nombre_archivo = input("Introduzca el nombre del archivo para guardar el resultado: ")
+                    ficheros.descargar_fichero(nombre_archivo, resultado)
+                    print("Resultado guardado correctamente.")
+                    break
+                elif siguiente_opcion == '3':
+                    continue
+                else:
+                    print("Opción inválida. Saliendo del programa.")
+                    break
+
             elif modo_entrada == 'a':
                 archivo = input("Introduzca el nombre del archivo: ")
                 polinomio1 = ficheros.leer_fichero_unico(archivo)
