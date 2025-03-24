@@ -12,12 +12,16 @@ def menu_opciones():
             print("Vamos a introducir el \033[1mPolinomio 1.\033[0m")
             print("")
             print("Si desea introducirlo manualmente, hágalo directamente siguiendo esta estructura (\033[3m4x^2 -6x +3\033[0m)")
-            print("o si desaa cargarlo desde un archivo, escriba F ")
+            print("o si desaa cargar el polinomio 1 desde un archivo, escriba A ")
+            print("Sin embargo, si desea usar el modo fichero completo escriba F")
             print("")
             modo_entrada = input("").strip().lower()
             if modo_entrada == 'f':
                 archivo = input("Introduzca el nombre del archivo: ")
-                polinomio1 = ficheros.leer_fichero(archivo)
+                polinomio1 = ficheros.leer_fichero_completo(archivo)
+            elif modo_entrada == 'a':
+                archivo = input("Introduzca el nombre del archivo: ")
+                polinomio1 = ficheros.leer_fichero_unico(archivo)
             else:
                 polinomio1 = polinomios.cargar_polinomio_desde_texto(modo_entrada)
         else:

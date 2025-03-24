@@ -1,5 +1,5 @@
-def leer_fichero(nombre_fichero):
-    """Lee un fichero que contiene un único polinomio en una línea."""
+def leer_fichero_completo(nombre_fichero):
+    """Lee un fichero que contiene todo el funcionamiento"""
     datos={}
     try:
         with open(nombre_fichero, 'r') as f:
@@ -16,10 +16,16 @@ def leer_fichero(nombre_fichero):
             elif linea.startswith("OPERACIÓN:"):
                 datos['operacion'] = linea.split(":")[-1].strip().upper()
 
-        if 'operacion' not in datos:
-            with open(nombre_fichero, 'r') as f:
-                linea = f.readline().strip()
-            return linea
+    except FileNotFoundError:
+        print("Error: Fichero no encontrado.")
+        return None
+
+def leer_fichero_unico(nombre_fichero):
+    """Lee un fichero que contiene un único polinomio en una línea."""
+    try:
+        with open(nombre_fichero, 'r') as f:
+            linea = f.readline().strip()
+        return linea
     except FileNotFoundError:
         print("Error: Fichero no encontrado.")
         return None
