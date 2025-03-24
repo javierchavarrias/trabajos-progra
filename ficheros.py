@@ -1,5 +1,21 @@
 def leer_fichero(nombre_fichero):
     """Lee un fichero que contiene un único polinomio en una línea."""
+    datos={}
+    try:
+        with open(nombre_fichero, 'r') as f:
+            lineas = f.readlines()
+
+        for linea in lineas:
+            linea = linea.strip()
+            if linea.startswith("POLINOMIO 1:"):
+                datos['p1'] = linea.split(":")[-1].strip()
+            elif linea.startswith("POLINOMIO 2:"):
+                datos['p2'] = linea.split(":")[-1].strip()
+            elif linea.startswith("NUMERO:"):
+                datos['numero'] = float(linea.split(":")[-1].strip())
+            elif linea.startswith("OPERACIÓN:"):
+                datos['operacion'] = linea.split(":")[-1].strip().upper()
+
     try:
         with open(nombre_fichero, 'r') as f:
             linea = f.readline().strip()
