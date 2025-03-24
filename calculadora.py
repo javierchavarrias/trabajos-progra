@@ -50,12 +50,12 @@ def menu_opciones():
             print("")
             print(
                 "Para introducir el Polinonio 2 puede hacerlo manualmente, escribiéndolo directamente siguiendo esta estructura (\033[3m4x^2 -6x +3\033[0m)")
-            print("o si desaa cargarlo desde un archivo, escriba F ")
+            print("o si desaa cargarlo desde un archivo, escriba A ")
             modo_entrada2 = input("").strip().lower()
 
-            if modo_entrada2 == 'f':
+            if modo_entrada2 == 'a':
                 archivo2 = input("Introduzca el nombre del archivo: ")
-                polinomio2 = ficheros.leer_fichero(archivo2)
+                polinomio2 = ficheros.leer_fichero_unico(archivo2)
             else:
                 polinomio2 = polinomios.cargar_polinomio_desde_texto(modo_entrada2)
             if opcion == '1':
