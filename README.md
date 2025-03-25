@@ -43,3 +43,17 @@ Debes tener en cuenta que entre los diferentes términos debes dejar un espacio 
 - POLINOMIO 1: 2x^2 - 4
 - NUMERO: 2
 - OPERACIÓN: EVALUACIÓN
+
+## Salida
+
+Los resultados pueden guardarse en un fichero de texto introduciendo un nombre cuando se solicite desde el menú.
+
+## Autores
+
+- Javier Chavarría
+- Daniela Gutiérrez-Liébana
+
+## Recomendaciones
+
+- Usa modo F para automatizar operaciones desde ficheros.
+- Recuerda que los polinomios deben escribirse en forma estándar, con términos separados por espacios (ej. 3x^2 -2x +1).
