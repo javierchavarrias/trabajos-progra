@@ -30,3 +30,16 @@ Este proyecto implementa una calculadora de polinomios en Python que permite rea
 4x^2 -6x +3
 
 Debes tener en cuenta que entre los diferentes términos debes dejar un espacio y el signo ponérselo a los coeficientes
+### Ejemplo de fichero completo (miarchivo.txt):
+
+
+- POLINOMIO 1: 2x^2 - 4 
+- POLINOMIO 2: x^2 + 1 
+- OPERACIÓN: MULTIPLICACION
+
+
+### Ejemplo de fichero de evaluación:
+
+- POLINOMIO 1: 2x^2 - 4
+- NUMERO: 2
+- OPERACIÓN: EVALUACIÓN
