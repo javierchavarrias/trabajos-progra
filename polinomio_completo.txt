@@ -1,0 +1,4 @@
+POLINOMIO 1: 2x^4 + x - 2
+POLINOMIO 2: x^2
+OPERACIÓN: RESTA
+

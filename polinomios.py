@@ -60,17 +60,31 @@ class Polinomio: #creamos un diccionario nueva para almacenar los polinomios
 def cargar_polinomio_desde_texto(texto):
     """Convierte un polinomio en formato texto a un diccionario."""
     coeficientes = {}
-    terminos = texto.split(" ")
+    texto = texto.replace("-", " -").replace("+", " +")
+    terminos = texto.strip().split()
     for termino in terminos:
+        if not termino:
+            continue
         if "x^" in termino:
-            partes = termino.split("x^")
-            coef = float(partes[0])
-            grado = int(partes[1])
+            coef_str, grado_str = termino.split("x^")
+            coef_str = coef_str.strip()
+            if coef_str not in ["", "+", "-"]:
+                coef = float(coef_str)
+            else:
+                coef=float(coef_str + "1")
+            grado = int(grado_str.strip())
         elif "x" in termino:
-            coef = float(termino.replace("x", "")) if termino.replace("x", "").strip() else 1.0
+            coef_str = termino.replace("x", "").strip()
+            if coef_str not in ["", "+", "-"]:
+                coef = float(coef_str)
+            else:
+                coef=float(coef_str + "1")
             grado = 1
         else:
-            coef = float(termino)
+            if termino in ["", "+", "-"]:
+                coef = float(termino + "1")
+            else:
+                coef = float(termino)
             grado = 0
         coeficientes[grado] = coef
     return Polinomio(coeficientes)

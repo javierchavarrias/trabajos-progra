@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # trabajos-progra
 # Calculadora de Polinomios
 

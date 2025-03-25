@@ -12,12 +12,45 @@ def menu_opciones():
             print("Vamos a introducir el \033[1mPolinomio 1.\033[0m")
             print("")
             print("Si desea introducirlo manualmente, hágalo directamente siguiendo esta estructura (\033[3m4x^2 -6x +3\033[0m)")
-            print("o si desaa cargarlo desde un archivo, escriba F ")
+            print("o si desaa cargar el polinomio 1 desde un archivo, escriba A ")
+            print("Sin embargo, si desea usar el modo fichero completo escriba F")
             print("")
             modo_entrada = input("").strip().lower()
             if modo_entrada == 'f':
                 archivo = input("Introduzca el nombre del archivo: ")
-                polinomio1 = ficheros.leer_fichero(archivo)
+                datos = ficheros.leer_fichero_completo(archivo)
+                if datos is None:
+                    continue
+                resultado = datos['resultado']
+                print("\nArchivo completo detectado. Operación realizada automáticamente.")
+                print(f"\033[1mResultado: {resultado}\033[0m")
+                if 'resto' in datos:
+                    print(f"Resto: {datos['resto']}")
+
+                print("\n\033[1m¿Qué desea hacer ahora?\033[0m")
+                print("1. \033[1mSalir\033[0m de la calculadora")
+                print("2. \033[1mDescargar\033[0m el resultado en un archivo")
+                print("3. \033[1mSeguir\033[0m calculando con el \033[1mresultado como Polinomio 1\033[0m")
+
+                siguiente_opcion = input("Seleccione una opción: ")
+                if siguiente_opcion == '1':
+                    print("Saliendo del programa.")
+                    break
+                elif siguiente_opcion == '2':
+                    nombre_archivo = input("Introduzca el nombre del archivo para guardar el resultado: ")
+                    ficheros.descargar_fichero(nombre_archivo, resultado)
+                    print("Resultado guardado correctamente.")
+                    break
+                elif siguiente_opcion == '3':
+                    continue
+                else:
+                    print("Opción inválida. Saliendo del programa.")
+                    break
+
+            elif modo_entrada == 'a':
+                archivo = input("Introduzca el nombre del archivo: ")
+                pol = ficheros.leer_fichero_unico(archivo)
+                polinomio1= polinomios.cargar_polinomio_desde_texto(pol)
             else:
                 polinomio1 = polinomios.cargar_polinomio_desde_texto(modo_entrada)
         else:
@@ -46,12 +79,13 @@ def menu_opciones():
             print("")
             print(
                 "Para introducir el Polinonio 2 puede hacerlo manualmente, escribiéndolo directamente siguiendo esta estructura (\033[3m4x^2 -6x +3\033[0m)")
-            print("o si desaa cargarlo desde un archivo, escriba F ")
+            print("o si desaa cargarlo desde un archivo, escriba A ")
             modo_entrada2 = input("").strip().lower()
 
-            if modo_entrada2 == 'f':
+            if modo_entrada2 == 'a':
                 archivo2 = input("Introduzca el nombre del archivo: ")
-                polinomio2 = ficheros.leer_fichero(archivo2)
+                pol = ficheros.leer_fichero_unico(archivo2)
+                polinomio2 = polinomios.cargar_polinomio_desde_texto(pol)
             else:
                 polinomio2 = polinomios.cargar_polinomio_desde_texto(modo_entrada2)
             if opcion == '1':
@@ -88,9 +122,14 @@ def menu_opciones():
             break
         elif siguiente_opcion == '2':
             nombre_archivo = input("Introduzca el nombre del archivo para guardar el resultado: ")
-            descargar_fichero(nombre_archivo, resultado)
+            ficheros.descargar_fichero(nombre_archivo, resultado)
             print("Resultado guardado correctamente.")
         elif siguiente_opcion == '3':
+            if opcion == '5':
+                print("No se puede continuar con ese resultado como polinomio 1")
+                resultado= None
+            elif isinstance(resultado, str):
+                resultado=polinomios.cargar_polinomio_desde_texto(resultado)
             continue
         elif siguiente_opcion == '4':
             resultado = None
